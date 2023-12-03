@@ -1,0 +1,15 @@
+:host {
+  display: block;
+
+  .movie-section {
+    //&::after {
+    //  content: "";
+    //  flex: auto;
+    //}
+  }
+
+  app-movie-thumbnail {
+    flex-basis: 20%;
+    min-width: 300px;
+  }
+}
