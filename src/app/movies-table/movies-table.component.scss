@@ -1,15 +1,11 @@
 :host {
   display: block;
+  padding: 12px 12px 5rem;
 
   .movie-section {
-    //&::after {
-    //  content: "";
-    //  flex: auto;
-    //}
   }
 
-  app-movie-thumbnail {
-    flex-basis: 20%;
-    min-width: 300px;
+  .movie-filters {
+    padding: 16px 8px;
   }
 }

@@ -1,15 +1,40 @@
-<p-card header="Advanced Card" subheader="Card Subheader">
+<p-card [header]="title" [subheader]="genre">
+
   <ng-template pTemplate="header">
-    <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png"/>
+    <div class="flex justify-content-center thumb-image-container">
+      <!-- <img [alt]="title" [src]="img"/> -->
+      <div [style.background-image]="'url(' + img + ')'" class="thumb-image"></div>
+    </div>
   </ng-template>
+
+  <p-tag *ngIf="inWatchList" class="fadeinup animation-duration-500" severity="success" value="On my watchlist">
+    <ng-template pTemplate="icon">
+      <i class="pi pi-desktop"></i>
+    </ng-template>
+  </p-tag>
+
   <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam
-    deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
-    quas!
+    {{ released }}
   </p>
+
+  <p>{{ duration }}</p>
+
+  <p>
+    {{ description }}
+  </p>
+
+  <p>
+    <i class="pi pi-star-fill"></i> {{ rating }}
+  </p>
+
   <ng-template pTemplate="footer">
-    <p-button icon="pi pi-check" label="Save"></p-button>
-    <p-button [style]="{ 'margin-left': '.5em' }" icon="pi pi-times" label="Cancel"
-              styleClass="p-button-secondary"></p-button>
+    <p-button
+      (onClick)="addToWatch($event)"
+      [label]="inWatchList ? 'Remove from Watchlist' : 'Add to Watchlist'">
+      <i *ngIf="inWatchList else deleteTemp" class="pi pi-times"></i>
+      <ng-template #deleteTemp>
+        <i class="pi pi-list"></i>
+      </ng-template>
+    </p-button>
   </ng-template>
 </p-card>
