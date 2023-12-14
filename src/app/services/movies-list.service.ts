@@ -139,7 +139,7 @@ export class MoviesListService extends BaseComponent {
     }));
   }
 
-  public sortMovies<T>(arr: T[], key: string): T[] {
+  public sortMovies<T>(arr: T[], key: keyof T): T[] {
     return ObjectSorter.sort(arr, key, true);
   }
 

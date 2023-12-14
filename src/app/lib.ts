@@ -1,13 +1,13 @@
-export class ObjectSorter<T> {
+export class ObjectSorter {
   // @param numDesc boolean value for sorting numbers in descending order
-  static sort<T>(arr: T[], key: string, numDesc?: boolean): T[] {
+  static sort<T, U extends keyof T>(arr: T[], key: U, numDesc?: boolean): T[] {
     if (arr.length <= 1) {
       return arr;
     }
 
     return [...arr].sort((a, b) => {
-      const valueA = ValueConverter.convert((a as any)[key]);
-      const valueB = ValueConverter.convert((b as any)[key]);
+      const valueA = ValueConverter.convert(a[key]);
+      const valueB = ValueConverter.convert(b[key]);
 
       if (typeof valueA === 'number' && typeof valueB === 'number') {
         // Numeric comparison
